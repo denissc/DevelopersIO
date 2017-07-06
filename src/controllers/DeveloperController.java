@@ -1,9 +1,15 @@
+package controllers;
+
+import models.Developer;
+import dao.DeveloperDAO;
+import dao.JavaIODeveloperDAOImpl;
+
 /**
  * Class that controls Developer DAO
  */
 public class DeveloperController {
 
-    private final DeveloperDAO developerDAO = new JavaIODeveloperDAOImpl();
+    private final DeveloperDAO<Developer> developerDAO = new JavaIODeveloperDAOImpl();
 
     /**
      * Creates new developer and saves it.
@@ -11,8 +17,8 @@ public class DeveloperController {
      * @param occupation developer occupation
      * @param age developer age
      */
-    public void create(String name, String occupation, int age) {
-        developerDAO.save(new Developer(name,occupation,age));
+    public void create(int id, String name, String occupation, int age) {
+        developerDAO.save(new Developer(id, name,occupation,age));
     }
 
     /**
@@ -27,7 +33,7 @@ public class DeveloperController {
         developer.setName(name);
         developer.setOccupation(occupation);
         developer.setAge(age);
-        developerDAO.update(developerId, developer);
+        developerDAO.update(developer);
     }
 
     /**
@@ -44,6 +50,7 @@ public class DeveloperController {
      * @param developerId developer id
      */
     public void deleteById(int developerId) {
-        developerDAO.deleteById(developerId);
+        Developer developer = developerDAO.findById(developerId);
+        developerDAO.delete(developer);
     }
 }

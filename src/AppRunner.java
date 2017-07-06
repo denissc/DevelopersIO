@@ -1,9 +1,9 @@
-import java.io.*;
+import views.ConsoleHelper;
 
 /**
- * Created by denissc on 27.06.17.
+ * App runner class
  */
-public class Bootstrap {
+public class AppRunner {
 
     public static void main(String[] args) {
         ConsoleHelper consoleHelper = new ConsoleHelper();

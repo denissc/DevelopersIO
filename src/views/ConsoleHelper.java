@@ -1,3 +1,8 @@
+package views;
+
+import controllers.DeveloperController;
+import models.Developer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,9 +28,9 @@ public class ConsoleHelper {
         System.out.println("__________________________");
         System.out.println("Menu :");
         System.out.println("==========================");
-        System.out.println("1 - Create new Developer;");
+        System.out.println("1 - Create new models.Developer;");
         System.out.println("2 - Edit developer;");
-        System.out.println("3 - View Developer info;");
+        System.out.println("3 - View models.Developer info;");
         System.out.println("4 - Delete developer;");
         System.out.println("5 - Quit.");
         System.out.println("__________________________");
@@ -56,10 +61,11 @@ public class ConsoleHelper {
 
         switch (userInput){
             case CREATE_NEW_DEV_INPUT:
+                developerId = readDeveloperId();
                 name = readDeveloperName();
                 occupation = readDeveloperOccupation();
                 age = readDeveloperAge();
-                controller.create(name, occupation, age);
+                controller.create(developerId, name, occupation, age);
                 break;
             case EDIT_DEV:
                 developerId = readDeveloperId();
@@ -88,11 +94,12 @@ public class ConsoleHelper {
 
     /**
      * Display developer data to console
-     * @param developer
+     * @param developer displayable developer
      */
     private void displayDeveloper(Developer developer) {
-        System.out.println("Developer :");
+        System.out.println("models.Developer :");
         System.out.println("==========================");
+        System.out.println("Id :" + developer.getId());
         System.out.println("Name :" + developer.getName());
         System.out.println("Occupation :" + developer.getOccupation());
         System.out.println("Age :" + developer.getAge());
@@ -103,7 +110,7 @@ public class ConsoleHelper {
      * @return int developer id
      */
     private int readDeveloperId() {
-        System.out.println("Input Developer Id:");
+        System.out.println("Input models.Developer Id:");
         return readIntInput();
     }
 
@@ -112,7 +119,7 @@ public class ConsoleHelper {
      * @return String developer name
      */
     private String readDeveloperName() {
-        System.out.println("Input Developer Name:");
+        System.out.println("Input models.Developer Name:");
         return readInput();
     }
 
@@ -121,7 +128,7 @@ public class ConsoleHelper {
      * @return int developer age
      */
     private int readDeveloperAge() {
-        System.out.println("Input Developer Age:");
+        System.out.println("Input models.Developer Age:");
         return readIntInput();
     }
 
@@ -130,7 +137,7 @@ public class ConsoleHelper {
      * @return String developer occupation
      */
     private String readDeveloperOccupation() {
-        System.out.println("Input Developer Occupation:");
+        System.out.println("Input models.Developer Occupation:");
         return readInput();
     }
 

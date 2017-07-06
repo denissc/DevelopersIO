@@ -1,24 +1,42 @@
+package models;
+
 import java.io.Serializable;
 
 /**
- * Developer serializable POJO class
+ * Developer POJO class
  */
-public class Developer implements Serializable{
+public class Developer {
     private int id;
     private String name;
     private String occupation;
     private int age;
 
+    public Developer(){
+        this(0,"","",0);
+    }
+
+    public Developer(int id) {
+        this(id,"","",0);
+    }
     /**
      * Construct new Developer class object by parameters
      * @param name developer name
      * @param occupation developer occupation
      * @param age developer age
      */
-    Developer(String name, String occupation,int age){
+    public Developer(int id, String name, String occupation,int age){
+        this.id = id;
         this.name = name;
         this.occupation = occupation;
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -75,8 +93,9 @@ public class Developer implements Serializable{
      */
     @Override
     public String toString() {
-        return " Name : " + this.name +
-                " Country : " + this.occupation +
-                " Age : " + this.age;
+        return " Developer [Id :" + id +
+                " Name : " + name +
+                " Country : " + occupation +
+                " Age : " + age + "]";
     }
 }
